@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --config jestconfig.json",
-    "build": "rollup -c",
-    "build-tsc": "tsc",
+    "build": "tsc",
     "start": "rollup -c -w",
     "demo:watch": "webpack --watch & webpack serve --inline --config ./webpack.config.js --content-base public --port 8721"
   },
@@ -17,6 +16,7 @@
     "src/**/*"
   ],
   "devDependencies": {
+    "@types/jest": "^26.0.20",
     "jest": "^26.6.3",
     "ts-jest": "^26.5.0",
     "tslib": "^2.1.0",

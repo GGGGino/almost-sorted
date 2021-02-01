@@ -1,3 +1,7 @@
-export function duration(param: any): string {
-  return 'pippo';
+import bubbleSort from './methods/bubbleSort';
+import selectionsort from './methods/selectionSort';
+
+export {
+  // bubbleSort,
+  selectionsort
 }

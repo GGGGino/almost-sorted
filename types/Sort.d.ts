@@ -4,4 +4,4 @@ export enum ComparisionResult {
   Minor = -1
 }
 
-export declare function comparision(first: any, second: any): ComparisionResult;
+export type Comparision = (first: any, second: any) => ComparisionResult;
