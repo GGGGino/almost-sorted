@@ -1,17 +1,17 @@
-import {Comparision, ComparisionResult} from "../../types/Sort";
+import {KeyRetrivier} from "../../types/Sort";
 
-export default function(array: any, callback: Comparision) {
+export default function(array: any, callback: KeyRetrivier) {
   for (let i = 0; i < array.length; i++) {
-    for (let k = 0; k < (array.length - i); k++) {
-      const result: ComparisionResult = callback(array[i], array[k]);
-
-      if (result === ComparisionResult.Equal) { continue; }
-      if (result === ComparisionResult.Minor) { continue; }
-      if (result === ComparisionResult.Major) {
-        const tempVar = array[i];
-        array[i] = array[k];
-        array[k] = tempVar;
+    let minorI = i;
+    for (let k = i+1; k < array.length; k++) {
+      if (callback(array[k]) < callback(array[minorI])) {
+        minorI = k;
       }
+    }
+    if (minorI !== i) {
+      const temp = array[i];
+      array[i] = array[minorI];
+      array[minorI] = temp;
     }
   }
 

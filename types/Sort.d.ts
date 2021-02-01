@@ -1,7 +1,5 @@
-export enum ComparisionResult {
-  Equal = 0,
-  Major = 1,
-  Minor = -1
-}
+export type ComparisionResult = 0 | 1 | -1;
 
 export type Comparision = (first: any, second: any) => ComparisionResult;
+
+export type KeyRetrivier = (element: any) => any;

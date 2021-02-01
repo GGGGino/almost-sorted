@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --config jestconfig.json",
-    "build": "tsc",
-    "start": "rollup -c -w",
-    "demo:watch": "webpack --watch & webpack serve --inline --config ./webpack.config.js --content-base public --port 8721"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
