@@ -1,10 +1,10 @@
-import {KeyRetrivier} from "../../types/Sort";
+import {Compare} from "../../types/Sort";
 
-export default function(array: any, callback: KeyRetrivier) {
+export default function<T>(array: any, callback: Compare<T>) {
   for (let i = 0; i < array.length; i++) {
     let minorI = i;
     for (let k = i+1; k < array.length; k++) {
-      if (callback(array[k]) < callback(array[minorI])) {
+      if (callback(array[k], array[minorI]) < 0) {
         minorI = k;
       }
     }
