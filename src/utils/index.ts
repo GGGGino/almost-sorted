@@ -1,7 +1,7 @@
-export function swap(array: any[], firstI: number, secondI: number) {
-  const temp = array[firstI];
-  array[firstI] = array[secondI];
-  array[secondI] = temp;
+export function swap(array: any[], firstIndex: number, secondIndex: number) {
+  const temp = array[firstIndex];
+  array[firstIndex] = array[secondIndex];
+  array[secondIndex] = temp;
 }
 
 export function halfIndex<T>(array: T[]) {

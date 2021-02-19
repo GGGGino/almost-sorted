@@ -1,11 +1,16 @@
 import {mergeSort} from '../index';
+import testData from './testData';
 
 test('mergeSort', () => {
-  const sortedArray = mergeSort([1,2,4,5,3], ((first: any, second: any) => {
-    if(first > second) { return 1; }
-    if(first < second) { return -1;}
-    return 0;
-  }));
+  const arrayTests: {confused: any[], ordered: any[]}[] = testData.numbers;
 
-  expect(sortedArray).toStrictEqual([1,2,3,4,5]);
+  for (const test of arrayTests) {
+    const sortedArray = mergeSort(test.confused, ((first: any, second: any) => {
+      if(first > second) { return 1; }
+      if(first < second) { return -1;}
+      return 0;
+    }));
+
+    expect(sortedArray).toStrictEqual(test.ordered);
+  }
 });
