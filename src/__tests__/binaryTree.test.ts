@@ -8,8 +8,6 @@ test('binarySearch', () => {
   for (const test of arrayTests) {
     const tree = binaryTree(test.confused);
 
-    console.log(JSON.stringify(tree));
-
     const subTree = getSubTree<number>(tree, (value) => {
       if (value < 4) { return 1; }
       if (value > 4) { return -1; }
@@ -17,11 +15,7 @@ test('binarySearch', () => {
       return 0;
     });
 
-    // console.log(JSON.stringify(subTree));
-
     const rotated = balance(tree);
-
-    console.log(JSON.stringify(rotated));
 
     expect(test.ordered).toStrictEqual(test.ordered);
   }

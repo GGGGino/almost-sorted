@@ -1,17 +1,18 @@
 {
   "name": "almost-sorted",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Main sorting functions plus some extras",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
     "test": "jest --config jestconfig.json",
-    "build": "tsc"
+    "build": "rm -rf build && tsc"
   },
   "keywords": [],
-  "author": "",
+  "author": "David Ginanni",
   "license": "MIT",
   "files": [
-    "src/**/*"
+    "build"
   ],
   "devDependencies": {
     "@types/jest": "^26.0.20",
