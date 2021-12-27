@@ -6,6 +6,7 @@
   "types": "build/index.d.ts",
   "scripts": {
     "test": "jest --config jestconfig.json",
+    "test:coverage": "jest --config jestconfig.json --coverage",
     "build": "rm -rf build && tsc",
     "lint": "npm run lint:ts && npm run lint:format",
     "lint:ts": "eslint '**/*.ts'",
