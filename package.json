@@ -6,7 +6,13 @@
   "types": "build/index.d.ts",
   "scripts": {
     "test": "jest --config jestconfig.json",
-    "build": "rm -rf build && tsc"
+    "build": "rm -rf build && tsc",
+    "lint": "npm run lint:ts && npm run lint:format",
+    "lint:ts": "eslint '**/*.ts'",
+    "lint:ts:fix": "npm run lint:ts -- --fix",
+    "lint:format": "prettier --list-different '**/*.ts'",
+    "lint:format:fix": "npm run lint:format -- --write",
+    "lint:fix": "npm run lint:ts:fix && npm run lint:format:fix"
   },
   "keywords": [],
   "author": "David Ginanni",
@@ -17,7 +23,11 @@
   "devDependencies": {
     "@types/jest": "^26.0.20",
     "@types/treeify": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "eslint": "^8.5.0",
     "jest": "^26.6.3",
+    "prettier": "^2.5.1",
     "treeify": "^1.1.0",
     "ts-jest": "^26.5.0",
     "tslib": "^2.1.0",

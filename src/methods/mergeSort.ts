@@ -1,5 +1,5 @@
-import {Compare} from "../../types/Sort";
-import {halfIndex} from "../utils";
+import { Compare } from '../../types/Sort';
+import { halfIndex } from '../utils';
 
 /*
  * This function given 2 array it builds one array by merging and sorting them
@@ -15,8 +15,12 @@ function partition<T>(left: T[], right: T[], compare: Compare<T>): T[] {
   const result: T[] = [];
 
   while (left.length > 0 || right.length > 0) {
-    if (left.length === 0) { return result.concat(right); }
-    if (right.length === 0) { return result.concat(left); }
+    if (left.length === 0) {
+      return result.concat(right);
+    }
+    if (right.length === 0) {
+      return result.concat(left);
+    }
 
     if (compare(left[0], right[0]) < 0) {
       result.push(left.shift()!);
@@ -40,7 +44,9 @@ function partition<T>(left: T[], right: T[], compare: Compare<T>): T[] {
  * └───┴───┘ └───┴───┘
  */
 export default function mergeSort<T>(array: T[], callback: Compare<T>): T[] {
-  if (array.length === 1) { return array; }
+  if (array.length === 1) {
+    return array;
+  }
 
   const halfLimit = halfIndex(array);
 

@@ -1,5 +1,5 @@
-import {Compare} from "../../types/Sort";
-import {swap} from "../utils";
+import { Compare } from '../../types/Sort';
+import { swap } from '../utils';
 
 /*
  * Loop all items to find the lowest/greatest
@@ -23,11 +23,11 @@ import {swap} from "../utils";
  * └─▲─┴───┴─┬─┴───┘
  *   └───────┘
  */
-export default function<T>(array: T[], callback: Compare<T>) {
+export default function <T>(array: T[], callback: Compare<T>) {
   for (let i = 0; i < array.length; i++) {
     let minorI = i;
 
-    for (let k = i+1; k < array.length; k++) {
+    for (let k = i + 1; k < array.length; k++) {
       if (callback(array[k], array[minorI]) < 0) {
         minorI = k;
       }
