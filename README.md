@@ -1,4 +1,5 @@
 # almost-sorted
+
 Main sorting functions plus some extras
 
 [![Build Status](https://app.travis-ci.com/GGGGino/almost-sorted.svg?branch=main)](https://app.travis-ci.com/GGGGino/almost-sorted)
@@ -8,6 +9,10 @@ Main sorting functions plus some extras
 ### Selection sort
 
 Link to [section](src/methods/selectionSort.ts)
+
+### Merge sort
+
+Link to [section](src/methods/mergeSort.ts)
 
 ## Credits
 

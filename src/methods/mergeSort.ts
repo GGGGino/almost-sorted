@@ -1,6 +1,16 @@
 import {Compare} from "../../types/Sort";
 import {halfIndex} from "../utils";
 
+/*
+ * This function given 2 array it builds one array by merging and sorting them
+ * ┌───┐   ┌───┐
+ * │20 ├─┬─┤12 │
+ * └───┘ │ └───┘
+ *       │
+ *   ┌───▼───┐
+ *   │12 │20 │
+ *   └───┴───┘
+ */
 function partition<T>(left: T[], right: T[], compare: Compare<T>): T[] {
   const result: T[] = [];
 
@@ -18,6 +28,17 @@ function partition<T>(left: T[], right: T[], compare: Compare<T>): T[] {
   return result;
 }
 
+/*
+ * This subfunction recursive call itself to break up the array into small pieces(2),
+ * then call the partition function that sort the array
+ *    0   1   2   3
+ *  ┌───┬───┬───┬───┐
+ *  │20 │12 │10 │15 │
+ *  └──┬┴───┴───┴┬──┘
+ * ┌───▼───┐ ┌───▼───┐
+ * │20 │12 │ │10 │15 │
+ * └───┴───┘ └───┴───┘
+ */
 export default function mergeSort<T>(array: T[], callback: Compare<T>): T[] {
   if (array.length === 1) { return array; }
 
