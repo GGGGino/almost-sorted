@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "description": "Main sorting functions plus some extras",
   "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "types": "types/index.d.ts",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "test:coverage": "jest --config jestconfig.json --coverage",
