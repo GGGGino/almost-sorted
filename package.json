@@ -19,7 +19,8 @@
   "author": "David Ginanni",
   "license": "MIT",
   "files": [
-    "build"
+    "build",
+    "types"
   ],
   "devDependencies": {
     "@types/jest": "^26.0.20",
