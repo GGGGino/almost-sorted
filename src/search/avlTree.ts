@@ -1,40 +1,40 @@
-import { Node } from '../../types/Sort';
+import { Compare, Node } from '../../types/Sort';
 
 /**
  * @return node
  */
-function insert<T>(root: Node<T> | undefined, value: T): Node<T> {
+function insert<T>(root: Node<T> | undefined, value: T, compare: Compare<T>): Node<T> {
   if (!root) {
     return { value, height: 1 };
   }
 
-  if (value < root.value) {
-    root.left = insert(root.left, value);
+  if (compare(value, root.value) < 0) {
+    root.left = insert(root.left, value, compare);
   }
-  if (value > root.value) {
-    root.right = insert(root.right, value);
+  if (compare(value, root.value) > 0) {
+    root.right = insert(root.right, value, compare);
   }
 
   const balance = getBalance(root);
 
   // Left Right Rotation
-  if (balance > 1 && getBalance(root.left) <= -1) {
+  if (root.left && balance > 1 && getBalance(root.left) <= -1) {
     root.left = leftRotation(root.left);
-    root = rightRotation(root)!;
+    root = rightRotation(root);
   }
   // Right Rotation
-  if (balance > 1 && getBalance(root.left) >= 1) {
-    root = rightRotation(root)!;
+  if (root.left && balance > 1 && getBalance(root.left) >= 1) {
+    root = rightRotation(root);
   }
 
   // Left Right Rotation
-  if (balance < -1 && getBalance(root.right) >= 1) {
+  if (root.right && balance < -1 && getBalance(root.right) >= 1) {
     root.right = rightRotation(root.right);
-    root = leftRotation(root)!;
+    root = leftRotation(root);
   }
   // Right Rotation
-  if (balance < -1 && getBalance(root.right) <= -1) {
-    root = leftRotation(root)!;
+  if (root.right && balance < -1 && getBalance(root.right) <= -1) {
+    root = leftRotation(root);
   }
 
   root.height = calculateHeight(root) + 1;
@@ -72,14 +72,16 @@ function getBalance<T>(root?: Node<T>): number {
 /**
  * Rotate the tree/subtree to the left
  */
-function leftRotation<T>(root?: Node<T>): Node<T> | undefined {
-  if (!root || !root.right) {
-    return;
-  }
-
+function leftRotation<T>(root: Node<T>): Node<T> {
   const pivot = root.right;
+
+  if (!pivot) { return root; }
+  
   root.right = pivot.left;
   pivot.left = root;
+
+  pivot.left.height = calculateHeight(pivot.right) + 1;
+  pivot.height = calculateHeight(pivot) + 1;
 
   return pivot;
 }
@@ -87,70 +89,25 @@ function leftRotation<T>(root?: Node<T>): Node<T> | undefined {
 /**
  * Rotate the tree/subtree to the right
  */
-function rightRotation<T>(root?: Node<T>): Node<T> | undefined {
-  if (!root || !root.left) {
-    return;
-  }
-
+function rightRotation<T>(root: Node<T>): Node<T> {
   const pivot = root.left;
+
+  if (!pivot) { return root; }
+
   root.left = pivot.right;
   pivot.right = root;
+
+  pivot.right.height = calculateHeight(pivot.right) + 1;
+  pivot.height = calculateHeight(pivot) + 1;
 
   return pivot;
 }
 
-function balanceNode<T>(root: Node<T> | null | undefined): Node<T> | undefined {
-  if (!root) {
-    return undefined;
-  }
-
-  if (root.left) {
-    root.left = balanceNode(root.left);
-  }
-
-  if (root.right) {
-    root.right = balanceNode(root.right);
-  }
-
-  const balance = getBalance(root);
-  let newRoot: Node<T> | undefined;
-
-  // right Rotation
-  if (balance > 1) {
-    console.log('rightRotation');
-    newRoot = rightRotation(root);
-  }
-
-  // left Rotation
-  if (balance < -1) {
-    console.log('left', root.value, balance);
-    newRoot = leftRotation(root);
-  }
-  // left right Rotation
-  // right left Rotation
-
-  if (!newRoot) {
-    newRoot = root;
-  }
-
-  newRoot.height = calculateHeight(newRoot) + 1;
-
-  return newRoot;
-}
-
-function balance<T>(root: Node<T> | null | undefined): Node<T> | null {
-  if (!root) {
-    return null;
-  }
-
-  return balanceNode(root)!;
-}
-
-export function create<T>(array: T[]) {
+export function create<T>(array: T[], compare: Compare<T>) {
   let root: Node<T> | undefined;
 
   for (const item of array) {
-    root = insert(root, item);
+    root = insert(root, item, compare);
   }
 
   return root;

@@ -1,18 +1,18 @@
-import { Node } from '../../types/Sort';
+import { Compare, Node } from '../../types/Sort';
 
 /**
  * @return node
  */
-function createTree<T>(root: Node<T> | null | undefined, value: T): Node<T> {
+function insert<T>(root: Node<T> | null | undefined, value: T, compare: Compare<T>): Node<T> {
   if (!root) {
     return { value, height: 1 };
   }
 
-  if (value < root.value) {
-    root.left = createTree(root.left, value);
+  if (compare(value, root.value) < 0) {
+    root.left = insert(root.left, value, compare);
   }
-  if (value > root.value) {
-    root.right = createTree(root.right, value);
+  if (compare(value, root.value) > 0) {
+    root.right = insert(root.right, value, compare);
   }
 
   root.height = getHeight(root) + 1;
@@ -28,11 +28,11 @@ function getHeight<T>(root?: Node<T>): number {
   return Math.max(root.left?.height || 0, root.right?.height || 0);
 }
 
-export function create<T>(array: T[]) {
+export function create<T>(array: T[], compare: Compare<T>) {
   let root: Node<T> | null = null;
 
   for (const item of array) {
-    root = createTree(root, item);
+    root = insert(root, item, compare);
   }
 
   return root;
