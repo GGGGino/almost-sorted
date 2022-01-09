@@ -1,6 +1,6 @@
 {
   "name": "almost-sorted",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Main sorting functions plus some extras",
   "main": "build/index.js",
   "types": "types/index.d.ts",
