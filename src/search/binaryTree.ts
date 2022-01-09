@@ -21,7 +21,9 @@ function createTree<T>(root: Node<T> | null | undefined, value: T): Node<T> {
 }
 
 function getHeight<T>(root?: Node<T>): number {
-  if (!root) { return 0; }
+  if (!root) {
+    return 0;
+  }
 
   return Math.max(root.left?.height || 0, root.right?.height || 0);
 }

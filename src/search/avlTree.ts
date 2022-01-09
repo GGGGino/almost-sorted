@@ -1,4 +1,4 @@
-import { SearchCB, Node } from '../../types/Sort';
+import { Node } from '../../types/Sort';
 
 /**
  * @return node
@@ -43,20 +43,25 @@ function insert<T>(root: Node<T> | undefined, value: T): Node<T> {
 }
 
 function getHeight<T>(root?: Node<T>): number {
-  if (!root) { return 0; }
+  if (!root) {
+    return 0;
+  }
 
   return root.height;
 }
 
 function calculateHeight<T>(root?: Node<T>): number {
-  if (!root) { return 0; }
+  if (!root) {
+    return 0;
+  }
 
   return Math.max(root.left?.height || 0, root.right?.height || 0);
 }
 
-
 function getBalance<T>(root?: Node<T>): number {
-  if (!root) { return 0; }
+  if (!root) {
+    return 0;
+  }
 
   const leftHeight = getHeight(root.left);
   const rightHeight = getHeight(root.right);
@@ -94,7 +99,7 @@ function rightRotation<T>(root?: Node<T>): Node<T> | undefined {
   return pivot;
 }
 
-function balanceNode<T>(root: Node<T> | null | undefined): Node<T>|undefined {
+function balanceNode<T>(root: Node<T> | null | undefined): Node<T> | undefined {
   if (!root) {
     return undefined;
   }
@@ -108,7 +113,7 @@ function balanceNode<T>(root: Node<T> | null | undefined): Node<T>|undefined {
   }
 
   const balance = getBalance(root);
-  let newRoot: Node<T>|undefined;
+  let newRoot: Node<T> | undefined;
 
   // right Rotation
   if (balance > 1) {
@@ -124,7 +129,9 @@ function balanceNode<T>(root: Node<T> | null | undefined): Node<T>|undefined {
   // left right Rotation
   // right left Rotation
 
-  if (!newRoot) { newRoot = root; }
+  if (!newRoot) {
+    newRoot = root;
+  }
 
   newRoot.height = calculateHeight(newRoot) + 1;
 

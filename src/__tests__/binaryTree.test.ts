@@ -1,13 +1,17 @@
-import {binary, getArraySorted, getSubTree} from '../index';
+import { binary, getArraySorted, getSubTree } from '../index';
 import testData from './testData';
-import {AsciiTree} from "oo-ascii-tree";
-import {Node} from '../../types/Sort'
+import { AsciiTree } from 'oo-ascii-tree';
+import { Node } from '../../types/Sort';
 
-const transformObjToAsciiTree = function<T>(root: Node<T>): AsciiTree {
+const transformObjToAsciiTree = function <T>(root: Node<T>): AsciiTree {
   const children: AsciiTree[] = [];
 
-  if (root.left) { children.push(transformObjToAsciiTree(root.left)); }
-  if (root.right) { children.push(transformObjToAsciiTree(root.right)); }
+  if (root.left) {
+    children.push(transformObjToAsciiTree(root.left));
+  }
+  if (root.right) {
+    children.push(transformObjToAsciiTree(root.right));
+  }
 
   return new AsciiTree(String(root.value + '.' + root.height), ...children);
 };

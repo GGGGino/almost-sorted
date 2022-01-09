@@ -1,6 +1,6 @@
-import {Node, SearchCB} from "../../types/Sort";
-import * as Binary from "./binaryTree";
-import * as Avl from "./avlTree";
+import { Node, SearchCB } from '../../types/Sort';
+import * as Binary from './binaryTree';
+import * as Avl from './avlTree';
 
 export const avl = Avl;
 export const binary = Binary;
@@ -27,15 +27,21 @@ export function getSubTree<T>(root: Node<T> | null | undefined, callback: Search
  * Return array sorted
  */
 export function getArraySorted<T>(root: Node<T> | null | undefined): T[] {
-  if (!root) { return []; }
+  if (!root) {
+    return [];
+  }
 
   let values: T[] = [];
 
-  if (root.left) { values = [...values, ...getArraySorted(root.left)]; }
+  if (root.left) {
+    values = [...values, ...getArraySorted(root.left)];
+  }
 
   values = [...values, root.value];
 
-  if (root.right) { values = [...values, ...getArraySorted(root.right)]; }
+  if (root.right) {
+    values = [...values, ...getArraySorted(root.right)];
+  }
 
   return values;
 }
