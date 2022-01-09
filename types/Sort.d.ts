@@ -2,6 +2,7 @@ export interface Node<T> {
   value: T;
   right?: Node<T>;
   left?: Node<T>;
+  height: number;
 }
 
 export type ComparisionResult = -1 | 0 | 1;

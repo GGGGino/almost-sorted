@@ -2,6 +2,6 @@ import bubbleSort from './methods/bubbleSort';
 import selectionsort from './methods/selectionSort';
 import mergeSort from './methods/mergeSort';
 import insertionSort from './methods/insertionSort';
-import binaryTree, { getSubTree } from './search/binaryTree';
+import { getSubTree, avl, binary, getArraySorted } from './search';
 
-export { bubbleSort, selectionsort, mergeSort, insertionSort, binaryTree, getSubTree };
+export { bubbleSort, selectionsort, mergeSort, insertionSort, avl, binary, getSubTree, getArraySorted };

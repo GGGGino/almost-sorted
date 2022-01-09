@@ -17,3 +17,8 @@ Link to [section](src/methods/mergeSort.ts)
 ## Credits
 
 Ascii graphics built thanks to [Ascii flow](https://asciiflow.com/)
+
+## Todo
+
+- [ ] BST permit multiple numbers
+- [ ] Venus
